@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snap Shop - A More Appealing UI</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100">
+
+    <div id="app-container">
+        <div id="loader-container" class="loader-container hidden"><div class="loader"></div></div>
+        <div id="toast-container"></div>
+        <div id="auth-view" class="flex items-center justify-center min-h-screen">
+             <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md text-center">
+                 <div id="login-form-container">
+                    <h1 class="text-3xl font-bold mb-2 text-gray-800">🛍️ Snap Shop Login</h1>
+                    <p class="text-gray-500 mb-6">Welcome back!</p>
+                    <form id="login-form">
+                        <div class="mb-4 text-left">
+                            <label for="login-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="login-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-6 text-left"> 
+                            <label for="login-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="login-password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Login</button>
+                    </form>
+                    <p class="mt-6 text-sm text-gray-600">New to Snap Shop? <a href="#" id="show-register" class="font-medium text-blue-600 hover:underline">Register here</a></p>
+                </div>
+                <div id="register-form-container" class="hidden">
+                     <h1 class="text-3xl font-bold mb-2 text-gray-800">Create Account</h1>
+                    <p class="text-gray-500 mb-6">Join the Snap Shop family!</p>
+                    <form id="register-form">
+                         <div class="mb-4 text-left">
+                            <label for="register-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="register-name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                        <div class="mb-4 text-left">
+                            <label for="register-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="register-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                        </div>
+                       <div class="mb-6 text-left">
+                           <label for="register-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                           <input type="password" id="reg ister-password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500">
+                       </div>
+                 --      <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Register</button>
+                    </form>
+                     <p class="mt-6 text-sm text-gray-600">Already have an account? <a href="#" id="show-login" class="font-medium text-blue-600 hover:underline">Login here</a></p>
+                </div>
+            </div>
+        </div>
+        <div id="shop-view" class="hidden">
+            <header class="header-main sticky top-0 z-20 shadow-lg">
+                <div class="container mfx-auto px-4 py-2 flex items-center justify-between">
+                    <div class="text-2xl font-bold text-white nav-link p-2 rounded-md">Snap Shop</div>
+                    <div class="flex-grow px-4">
+                        <div class="flex items-center bg-white rounded-md">
+                            <input type="search" id="search-bar" placeholder="Search Snap Shop" class="search-bar w-full px-4 py-2 text-black rounded-l-md border-2 border-transparent focus:border-yellow-500">
+                            <button class="search-button p-2 rounded-r-md">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" /></svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-white space-x-4">
+                        <div id="welcome-user-container" class="nav-link hidden md:block p-2 rounded-md">
+                            <p class="text-xs">Hello, <span id="welcome-user"></span></p>
+                            <p class="font-bold text-sm">Account & Lists</p>
+                        </div>
+                        <button id="cart-button" class="relative nav-link flex items-end p-2 rounded-md">
+                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
+                            <span class="font-bold text-sm ml-1">Cart</span>
+                            <span id="cart-count" class="absolute top-0 right-0 -mt-1 -mr-1 bg-yellow-500 text-black text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                        </button>
+                        <button id="logout-btn" class="nav-link font-bold text-sm p-2 rounded-md">Logout</button>
+                    </div>
+                </div>
+            </header>
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span>🎉 Free Shipping on Orders Over $50!</span>
+                    <span>✨ New Arrivals in Electronics This Week</span>
+                    <span>🔥 Flash Sale on All Fashion Items - 20% OFF!</span>
+                    <span>📚 Bestselling Books at a Discount</span>=
+                     <span>🎉 Free Shipping on Orders Over $50!</span>
+                    <span>✨ New Arrivals in Electronics This Week</span>
+                    <span>🔥 Flash Sale on All Fashion Items - 20% OFF!</span>
+                    <span>📚 Bestselling Books at a Discount</span>
+                </div>
+            </div>
+            <section class="hero-section text-white py-20">
+                <div class="container mx-auto text-center">
+                    <h1 class="text-5xl font-bold mb-4">Explore Our Latest Collection</h1>
+                    <p class="text-lg mb-8">Find the best deals on electronics, fashion, books, and more.</p>
+                    <button class="hero-button text-white font-bold py-3 px-8 rounded-full text-lg">Shop Now</button>
+                </div>
+            </section>
+            <main class="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8">Top Picks for You</h2>
+                <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8"></div>
+                <p id="no-results" class="text-center text-gray-500 mt-8 text-lg hidden">No products found.</p>
+            </main>
+        </div>      --
+        <div id="cart-sidebar" class="fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out z-30 flex flex-col">
+        </div>
+        <div id="cart-overlay" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-50 z-20 hidden"></div>
+        <div id="payment-modal" class="fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-40 flex items-center justify-center hidden">
+            <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+                <h2 class="text-2xl font-bold text-gray-800 mb-6 text-center">Choose Payment Method</h2>
+                <div id="payment-options" class="flex justify-center space-x-4 border-b pb-4 mb-4">
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="paymentMethod" value="card" checked class="form-radio h-5 w-5 text-blue-600">
+                        <span class="font-medium text-gray-700">Credit/Debit Card</span>
+                    </label>
+                    <label class="flex items-center space-x-2 cursor-pointer">
+                        <input type="radio" name="paymentMethod" value="cod" class="form-radio h-5 w-5 text-blue-600">
+                        <span class="font-medium text-gray-700">Cash on Delivery</span>
+                    </label>
+                </div>
+                <div id="card-details-form">
+                    <p class="text-gray-600 mb-4 text-center">This is a simulated payment gateway.</p>
+                    <div class="mb-4">
+                        <label for="card-number" class="block text-sm font-medium text-gray-700 mb-1">Card Number</label>
+                        <input type="text" id="card-number" placeholder="1234 5678 9101 1121" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                    </div>
+                    <div class="flex space-x-4 mb-6">
+                        <div class="w-1/2">
+                           <label for="expiry-date" class="block text-sm font-medium text-gray-700 mb-1">Expiry Date</label>
+                           <input type="text" id="expiry-date" placeholder="MM/YY" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                        </div>
+                        <div class="w-1/2">
+                           <label for="cvc" class="block text-sm font-medium text-gray-700 mb-1">CVC</label>
+                           <input type="text" id="cvc" placeholder="123" class="w-full px-4 py-2 border border-gray-300 rounded-lg">
+                        </div>
+                    </div>
+                    <button id="confirm-payment-btn" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Pay Now</button>
+                </div>
+                <div id="cod-info" class="hidden text-center">
+                    <p class="text-gray-700 my-6">You can pay in cash at the time of delivery.</p>
+                    <button id="place-order-cod-btn" class="w-full bg-green-600 text-white py-2 rounded-lg font-semibold hover:bg-green-700 transition">Place Order</button>
+                </div>
+                <button id="cancel-payment-btn" class="w-full mt-4 text-gray-600 hover:text-gray-800 font-medium">Cancel</button>
+            </div>
+        </div>
+        <div id="product-detail-modal" class="hidden"></div> 
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+
+        

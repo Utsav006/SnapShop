@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Snap Shop</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Seller Authentication View -->
+    <div id="seller-auth-view"> dnbnm ddf xvdf dggc fgcvdrrf ddfb uthd 
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
+                
+                <!-- Login Form -->
+                <div id="seller-login-container">
+                    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Seller Login</h1>
+                    <form id="seller-login-form">
+                        <div class="mb-4">
+                            <label for="seller-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="seller-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="seller-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="seller-password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <p id="login-error-message" class="text-red-500 text-sm mb-4 text-center hidden"></p>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Login</button>
+                    </form>
+                    <p class="mt-6 text-sm text-center text-gray-600">Don't have an account? <a href="#" id="show-register-form" class="font-medium text-blue-600 hover:underline">Register here</a></p>
+                </div>
+
+                <!-- Registration Form -->
+                <div id="seller-register-container" class="hidden">
+                    <h1 class="text-3xl font-bold mb-6 text-center text-gray-800">Seller Registration</h1>
+                    <form id="seller-register-form">
+                        <div class="mb-4">
+                            <label for="register-name" class="block text-sm font-medium text-gray-700 mb-1">Full Name</label>
+                            <input type="text" id="register-name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="mb-4">
+                            <label for="register-email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="register-email" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <div class="mb-6">
+                            <label for="register-password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                            <input type="password" id="register-password" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                        </div>
+                        <p id="register-message" class="text-sm mb-4 text-center hidden"></p>
+                        <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Register</button>
+                    </form>
+                    <p class="mt-6 text-sm text-center text-gray-600">Already have an account? <a href="#" id="show-login-form" class="font-medium text-blue-600 hover:underline">Login here</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Product Management View (Initially Hidden) -->
+    <div id="product-management-view" class="hidden">
+        <div class="container mx-auto px-4 py-8">
+            <header class="flex justify-between items-center mb-8">
+                <h1 class="text-4xl font-bold text-gray-800">Admin Panel</h1>
+                <a href="index.html" class="text-blue-600 hover:underline">← Back to Shop</a>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="md:col-span-1">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h2 class="text-2xl font-bold mb-6 text-gray-800">Add New Product</h2>
+                        <form id="add-product-form">
+                            <div class="mb-4">
+                                <label for="product-name" class="block text-sm font-medium text-gray-700 mb-1">Product Name</label>
+                                <input type="text" id="product-name" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="product-price" class="block text-sm font-medium text-gray-700 mb-1">Price</label>
+                                <input type="number" id="product-price" step="0.01" min="0" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="mb-4">
+                                <label for="product-image" class="block text-sm font-medium text-gray-700 mb-1">Image URL</label>
+                                <input type="url" id="product-image" placeholder="https://placehold.co/..." required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <div class="mb-6">
+                                <label for="product-category" class="block text-sm font-medium text-gray-700 mb-1">Category</label>
+                                <input type="text" id="product-category" required class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500">
+                            </div>
+                            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition">Add Product</button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="md:col-span-2">
+                    <div class="bg-white p-6 rounded-xl shadow-lg">
+                        <h2 class="text-2xl font-bold mb-6 text-gray-800">Manage Products</h2>
+                        <div id="admin-product-list" class="space-y-4">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
+

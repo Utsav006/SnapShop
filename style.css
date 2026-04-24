@@ -1,0 +1,167 @@
+/* Custom Color Palette for Snap Shop */
+:root {
+    --snapshop-primary: #007BFF; /* A vibrant blue for actions */
+    --snapshop-primary-dark: #0056b3;
+    --snapshop-header: #131921; /* Keeping the dark, premium header */
+    --snapshop-background: #EAEDED;
+    --snapshop-surface: #FFFFFF;
+    --snapshop-border: #DDD;
+    --snapshop-accent: #FF9900; /* Using orange as an accent */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--snapshop-background);
+}
+
+/* --- Header & Navigation --- */
+.header-main {
+    background-color: var(--snapshop-header);
+    color: white;
+}
+
+.search-bar:focus {
+    border-color: var(--snapshop-accent);
+    outline: none;
+    box-shadow: none;
+}
+
+.search-button {
+    background-color: var(--snapshop-accent);
+    transition: background-color 0.2s;
+}
+
+.search-button:hover {
+    background-color: #E68A00; /* Darker orange */
+}
+
+.nav-link:hover {
+    border-color: white;
+}
+
+/* --- Marquee/Ticker --- */
+.marquee-container {
+    background-color: var(--snapshop-primary);
+    color: white;
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee-content {
+    display: inline-block;
+    padding-left: 100%;
+    animation: marquee-scroll 25s linear infinite;
+}
+
+.marquee-content span {
+    margin: 0 40px;
+    font-weight: 500;
+}
+
+@keyframes marquee-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-100%); }
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1555529669-e69e7aa0ba9e?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+}
+
+.hero-button {
+    background-color: var(--snapshop-primary);
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.hero-button:hover {
+    background-color: var(--snapshop-primary-dark);
+    transform: translateY(-2px);
+}
+
+/* --- Product Cards --- */
+.product-card {
+    background-color: var(--snapshop-surface);
+    border: 1px solid var(--snapshop-border);
+    border-radius: 8px;
+    transition: box-shadow 0.3s, transform 0.3s;
+    overflow: hidden;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+.product-title {
+    color: #0F1111;
+    font-size: 1rem;
+    line-height: 1.4;
+    max-height: 2.8rem; /* 2 lines */
+    overflow: hidden;
+}
+
+.add-to-cart-btn {
+    background-color: var(--snapshop-primary);
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--snapshop-primary-dark);
+}
+
+.star-rating {
+    color: var(--snapshop-accent);
+}
+
+/* --- General UI Components (Loaders, Toasts) --- */
+.hidden { display: none; }
+
+.loader-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex; justify-content: center; align-items: center; z-index: 9999;
+}
+
+.loader {
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid var(--snapshop-primary);
+    border-radius: 50%; width: 50px; height: 50px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#toast-container {
+    position: fixed; bottom: 20px; right: 20px; z-index: 10000;
+    display: flex; flex-direction: column; gap: 10px;
+}
+
+.toast {
+    color: white; padding: 16px 24px; border-radius: 8px; font-weight: 500;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.toast.show { opacity: 1; transform: translateY(0); }
+.toast.success { background-color: #28a745; }
+.toast.error { background-color: #dc3545; }
+.toast.info { background-color: #17a2b8; }
+
+.add-to-cart-btn-modal {
+    background-color: var(--snapshop-primary);
+    color: white;
+    transition: background-color 0.2s;
+}
+
+.add-to-cart-btn-modal:hover {
+    background-color: var(--snapshop-primary-dark);
+}
+
